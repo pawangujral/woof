@@ -65,7 +65,7 @@
     "*.css": [
       "stylelint --fix"
     ],
-    "*.{ts}": [
+    "*.{ts|tsx}": [
       "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\""
     ],
     "*.{css,js,json,md,ts,tsx,jsx,yaml,yml}": [
