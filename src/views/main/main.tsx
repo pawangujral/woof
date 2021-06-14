@@ -6,7 +6,7 @@ import {
   ERROR_DEFAULT_MESSAGE,
 } from '_utils/constants';
 import { flatReponse } from '_utils/utils';
-import useToasts from '_hooks/useToasts';
+import useToasts from '_hooks/use-toasts';
 
 const Main: React.FC = () => {
   const { addToast } = useToasts();

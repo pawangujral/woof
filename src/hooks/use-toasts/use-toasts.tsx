@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { toastType, toastMessagesType, toastProviderType } from '_utils/types';
-import { ToastContainer, ToastMessage } from './useToasts.style';
+import { ToastContainer, ToastMessage } from './use-toasts.style';
 
 interface providerProps {
   children: React.ReactNode;

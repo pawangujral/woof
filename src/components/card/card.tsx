@@ -1,7 +1,7 @@
 import * as React from 'react';
 import LoaderImage from '_assets/images/landing.png';
 import NotFoundImage from '_assets/images/notfound.png';
-import { FigureCard } from './placeholder.style';
+import { FigureCard } from './card.style';
 
 interface PlaceHolderProps {
   src: string;

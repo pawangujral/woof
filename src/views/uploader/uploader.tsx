@@ -1,6 +1,6 @@
 import * as React from 'react';
-import PlaceHolder from '_components/placeholder';
-import useToasts from '_hooks/useToasts';
+import PlaceHolder from '_components/card';
+import useToasts from '_hooks/use-toasts';
 import { ERROR_NO_PREDICTION } from '_utils/constants';
 import { imageValidation, dissectResponse } from '_utils/utils';
 import {

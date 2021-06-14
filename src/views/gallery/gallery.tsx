@@ -1,7 +1,7 @@
 import * as React from 'react';
-import PlaceHolder from '_components/placeholder';
-import useLazy from '_hooks/useLazy';
-import useToasts from '_hooks/useToasts';
+import PlaceHolder from '_components/card';
+import useLazy from '_hooks/use-lazy';
+import useToasts from '_hooks/use-toasts';
 import {
   DOGS_API_ENDPOINT_BREED_SINGLE,
   ERROR_NO_COLLECTION,

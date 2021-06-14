@@ -1,1 +1,1 @@
-export { default } from './useLazy';
+export { default } from './use-lazy';

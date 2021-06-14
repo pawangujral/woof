@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '_components/button';
-import PlaceHolder from '_components/placeholder';
+import PlaceHolder from '_components/card';
 
 const NotFound: React.FC = () => {
   return (
