@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "charset": "utf-8",
@@ -22,8 +23,14 @@
     "incremental": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "tsBuildInfoFile": "./.cache/typescript"
+    "tsBuildInfoFile": "./.cache/typescript",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "_components/*": ["src/components/*"]
+    }
   },
-  "files": ["./src/index.ts"],
-  "include": ["./**/*"]
+  "files": ["src/index.tsx"],
+  "include": ["./**/*"],
+  "exclude": ["node_modules", ".vscode"]
 }
