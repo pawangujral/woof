@@ -7,8 +7,8 @@ type ImageValidationReturn = {
 };
 
 export const imageValidation = (file: fileType): ImageValidationReturn => {
-  const MAX_FILE_SIZE: Number = 2000000;
-  const MIN_FILE_SIZE: Number = 0;
+  const MAX_FILE_SIZE: number = 2000000;
+  const MIN_FILE_SIZE: number = 0;
   const FILE_TYPE_ARR: string[] = ['image/jpeg', 'image/png', 'image/jpg'];
   const { size, type } = file;
 
@@ -20,10 +20,12 @@ export const imageValidation = (file: fileType): ImageValidationReturn => {
     return { data: ERROR_IMAGE_TYPE, isFileValid: false };
   }
 
-  return { isFileValid: true, data: URL.createObjectURL(file) };
+  return { data: URL.createObjectURL(file), isFileValid: true };
 };
 
-export const flatReponse = (message: any): string[] => Object.keys(message);
+export const flatReponse = (message: { [key: string]: string[] }): string[] => {
+  return Object.keys(message);
+};
 
 export const dissectResponse = (name: string, list: string[]): string => {
   const dissectData = name
@@ -32,15 +34,12 @@ export const dissectResponse = (name: string, list: string[]): string => {
     .trim()
     .split(' ');
 
-  let matchFounded: string = '';
-
-  for (let a of dissectData) {
-    if (list.includes(a)) {
-      console.log('Match Found for ' + a);
-      matchFounded = a;
-      break;
+  for (const data of dissectData) {
+    if (list.includes(data)) {
+      console.log('Match Found for ' + data);
+      return data;
     }
   }
 
-  return matchFounded;
+  return '';
 };
