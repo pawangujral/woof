@@ -65,7 +65,7 @@
     "*.css": [
       "stylelint --fix"
     ],
-    "*.{ts|tsx}": [
+    "*.{ts,tsx}": [
       "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\""
     ],
     "*.{css,js,json,md,ts,tsx,jsx,yaml,yml}": [
@@ -79,7 +79,7 @@
     "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
     "husky:lint-staged": "lint-staged",
     "husky:pre-commit": "run-p husky:lint-staged",
-    "lint": "run-p lint:css lint:ts",
+    "lint": "run-p lint:css lint:ts .tsx",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:css:fix": "stylelint --fix 'src/**/*.css'",
     "lint:fix": "run-p lint:*:fix",
