@@ -1,4 +1,12 @@
 {
+  "name": "@pawangujral/woof-woof-application",
+  "author": "Pawan Gujral",
+  "email": "gujral87@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawangujral/woof.git",
+    "bugs": "https://github.com/pawangujral/woof.git/issues"
+  },
   "dependencies": {
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow/tfjs-converter": "^3.7.0",
@@ -65,15 +73,13 @@
     "*.css": [
       "stylelint --fix"
     ],
-    "*.{ts,tsx}": [
+    "*.{ts}": [
       "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\""
     ],
     "*.{css,js,json,md,ts,tsx,jsx,yaml,yml}": [
       "prettier --write"
     ]
   },
-  "name": "@ass/frontend-assignment-base",
-  "repository": "https://github.com/pawangujral/woof.git",
   "scripts": {
     "format": "prettier --check \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
     "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
