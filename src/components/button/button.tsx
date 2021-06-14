@@ -10,7 +10,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 }
 
 const Button: React.FC<ButtonProps & {
-  ref: React.Ref<HTMLButtonElement>;
+  ref?: React.Ref<HTMLButtonElement>;
 }> = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
