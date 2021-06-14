@@ -1,7 +1,11 @@
 {
   "dependencies": {
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs-converter": "^3.7.0",
+    "@tensorflow/tfjs-core": "^3.7.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3"
   },
   "description": "Search for dogs",
@@ -14,6 +18,7 @@
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.10",
     "@types/webpack-env": "^1.15.1",
     "autoprefixer": "^9.7.4",
@@ -21,6 +26,7 @@
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
+    "file-loader": "^6.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
@@ -59,7 +65,7 @@
     "*.css": [
       "stylelint --fix"
     ],
-    "*.ts": [
+    "*.{ts}": [
       "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\""
     ],
     "*.{css,js,json,md,ts,tsx,jsx,yaml,yml}": [
@@ -69,15 +75,15 @@
   "name": "@ass/frontend-assignment-base",
   "repository": "https://github.com/pawangujral/woof.git",
   "scripts": {
-    "format": "prettier --check \"**/*.{css,js,json,md,ts,yml,yaml}\"",
-    "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,yml,yaml}\"",
+    "format": "prettier --check \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
+    "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
     "husky:lint-staged": "lint-staged",
     "husky:pre-commit": "run-p husky:lint-staged",
     "lint": "run-p lint:css lint:ts",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:css:fix": "stylelint --fix 'src/**/*.css'",
     "lint:fix": "run-p lint:*:fix",
-    "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
+    "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"" ,
     "lint:ts:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
     "start": "webpack-dev-server --config ./webpack.config.js",
     "test": "jest",

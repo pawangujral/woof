@@ -25,9 +25,14 @@
     "sourceMap": true,
     "tsBuildInfoFile": "./.cache/typescript",
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": "/",
     "paths": {
-      "_components/*": ["src/components/*"]
+      "_components/*": ["src/components/*"],
+      "_hooks/*": ["src/hooks/*"],
+      "_theme/*": ["src/theme/*"],
+      "_utils/*": ["src/utils/*"],
+      "_views/*": ["src/views/*"],
+      "_assets/*": ["src/assets/*"]
     }
   },
   "files": ["src/index.tsx"],
