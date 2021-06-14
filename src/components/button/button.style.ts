@@ -19,6 +19,7 @@ const handleVariant = (variant: string): string => {
             color: var(--primary-color);
             background-color: transparent;
             border: 0;
+            text-decoration: underline;
         `;
     default:
       return `

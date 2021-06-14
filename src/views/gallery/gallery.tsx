@@ -1,12 +1,13 @@
 import * as React from 'react';
-import PlaceHolder from '_components/card';
+import Button from '_components/button';
+import Card from '_components/card';
 import useLazy from '_hooks/use-lazy';
 import useToasts from '_hooks/use-toasts';
 import {
   DOGS_API_ENDPOINT_BREED_SINGLE,
   ERROR_NO_COLLECTION,
 } from '_utils/constants';
-import { List, ListContainer, LoadMoreBtn } from './gallery.style';
+import { List, ListContainer } from './gallery.style';
 
 interface GalleryProps {
   breed: string;
@@ -53,7 +54,7 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
       </h2>
       <List>
         {collection.map((item: string, index: number) => (
-          <PlaceHolder
+          <Card
             key={index}
             src={item}
             loading="lazy"
@@ -63,7 +64,7 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
         ))}
       </List>
       {isLoading && <p>loading more Images.....</p>}
-      <LoadMoreBtn ref={loadMoreRef}>load more</LoadMoreBtn>
+      <Button ref={loadMoreRef} variant="text" text="load more" />
     </ListContainer>
   );
 };

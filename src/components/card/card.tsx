@@ -10,7 +10,7 @@ interface PlaceHolderProps {
   alt: string;
 }
 
-const PlaceHolder: React.FC<PlaceHolderProps> = ({
+const Card: React.FC<PlaceHolderProps> = ({
   src,
   width,
   loading = 'eager',
@@ -35,4 +35,4 @@ const PlaceHolder: React.FC<PlaceHolderProps> = ({
   );
 };
 
-export default React.memo(PlaceHolder);
+export default React.memo(Card);

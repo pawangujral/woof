@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PlaceHolder from '_components/card';
+import Card from '_components/card';
 import useToasts from '_hooks/use-toasts';
 import { ERROR_NO_PREDICTION } from '_utils/constants';
 import { imageValidation, dissectResponse } from '_utils/utils';
@@ -118,7 +118,7 @@ const Uploader: React.FC<UploaderProps> = ({
           <p>Want to try again ?</p>
         </>
       ) : (
-        <PlaceHolder src="landing" width="400px" alt="landing Illustration" />
+        <Card src="landing" width="400px" alt="landing Illustration" />
       )}
 
       <InputLabel>

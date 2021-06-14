@@ -4,14 +4,6 @@ export const ListContainer = styled.section`
   padding: var(--base-spacing);
 `;
 
-export const LoadMoreBtn = styled.button`
-  background: 0;
-  border: 0;
-  margin: 30px;
-  text-decoration: underline;
-  text-transform: uppercase;
-`;
-
 export const List = styled.div`
   display: grid;
   grid-gap: var(--base-spacing);
@@ -32,7 +24,7 @@ export const List = styled.div`
     }
   }
 
-  @media (max-width: var(--app-break-point)) {
+  @media (max-width: 576px) {
     grid-template-columns: 1fr;
 
     figure {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '_components/button';
-import PlaceHolder from '_components/card';
+import Card from '_components/card';
 
 const NotFound: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const NotFound: React.FC = () => {
       <h1>
         Are you <span> lost?</span>
       </h1>
-      <PlaceHolder illus="notfound" />
+      <Card src="notfound" width="100%" alt="404 illustration" />
       <p>what to next ?</p>
       <Button
         color="primary"
