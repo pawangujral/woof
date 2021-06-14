@@ -1,14 +1,11 @@
 import * as React from 'react';
 import Card from '_components/card';
+import Input from '_components/input';
+import Preview from '_components/preview';
 import useToasts from '_hooks/use-toasts';
-import { ERROR_NO_PREDICTION } from '_utils/constants';
+import { ERROR_NO_PREDICTION, ERROR_NOT_VALID_IMAGE } from '_utils/constants';
 import { imageValidation, dissectResponse } from '_utils/utils';
-import {
-  UploadContainer,
-  ImageContainer,
-  InputLabel,
-  Subtitle,
-} from './uploader.style';
+import { UploadContainer, Subtitle } from './uploader.style';
 import * as mobilenet from '@tensorflow-models/mobilenet';
 
 interface UploaderProps {
@@ -25,7 +22,7 @@ const Uploader: React.FC<UploaderProps> = ({
   const previewElement = React.useRef<HTMLImageElement>(null);
   const [preview, setPreview] = React.useState<string | null>(null);
   const [isLoading, setLoading] = React.useState<boolean>(false);
-  const [breedName, setBreedName] = React.useState<string | null>(null);
+  const [breedName, setBreedName] = React.useState<string>('');
 
   const handleFetchModel = async () => {
     try {
@@ -35,36 +32,28 @@ const Uploader: React.FC<UploaderProps> = ({
         previewElement.current as HTMLImageElement,
       );
 
-      console.log(predictions);
-
       if (!predictions.length) {
         throw new Error(ERROR_NO_PREDICTION);
       }
 
-      const dissectData = dissectResponse(predictions[0].className);
-
-      let finalPredictions: string = '';
-
-      for (let a of dissectData) {
-        if (breedList.includes(a)) {
-          console.log('Match Found for ' + a);
-          finalPredictions = a;
-          break;
-        }
-      }
-
-      if (!finalPredictions.length) {
-        throw new Error("Doesn't look a dog image");
-        return;
-      }
-
-      handlePredictionData(finalPredictions);
-      setBreedName(finalPredictions);
+      handleDataSet(predictions[0].className);
     } catch (err) {
       addToast({ message: err.message, variant: 'error' });
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleDataSet = (className: string) => {
+    const result = dissectResponse(className, breedList);
+
+    if (!result.length) {
+      addToast({ message: ERROR_NOT_VALID_IMAGE, variant: 'error' });
+      return;
+    }
+
+    handlePredictionData(result);
+    setBreedName(result);
   };
 
   React.useEffect(() => {
@@ -93,43 +82,31 @@ const Uploader: React.FC<UploaderProps> = ({
       <h2>
         want to see a <span>Magic trick?</span>
       </h2>
-      {!preview && (
-        <Subtitle>
-          Upload your dog photo <span>&amp;</span> we will tell you which breed
-          it is.{' '}
-        </Subtitle>
-      )}
 
       {preview ? (
-        <>
-          <ImageContainer overlay={isLoading}>
-            <img src={preview} ref={previewElement} alt="Image Preview" />
-            {!isLoading && breedName && (
-              <figcaption>
-                Your dog breed is <span>{breedName}</span>
-              </figcaption>
-            )}
-            {!isLoading && !breedName && (
-              <figcaption>
-                Did you really upload your <span>dog</span> image?
-              </figcaption>
-            )}
-          </ImageContainer>
-          <p>Want to try again ?</p>
-        </>
+        <Preview
+          isLoading={isLoading}
+          src={preview}
+          ref={previewElement}
+          label="Uploaded Image Preview"
+          title={breedName}
+        />
       ) : (
-        <Card src="landing" width="400px" alt="landing Illustration" />
+        <>
+          <Subtitle>
+            Upload your dog photo <span>&amp;</span> we will tell you which
+            breed it is.
+          </Subtitle>
+          <Card src="landing" width="400px" alt="landing Illustration" />
+        </>
       )}
 
-      <InputLabel>
-        Upload image
-        <input
-          type="file"
-          ref={inputElement}
-          onChange={handleImageUpload}
-          accept="image/*"
-        />
-      </InputLabel>
+      <Input
+        label="Upload image"
+        handleChange={handleImageUpload}
+        ref={inputElement}
+        disabled={isLoading}
+      />
     </UploadContainer>
   );
 };

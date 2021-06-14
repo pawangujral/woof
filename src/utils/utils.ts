@@ -25,9 +25,22 @@ export const imageValidation = (file: fileType): ImageValidationReturn => {
 
 export const flatReponse = (message: any): string[] => Object.keys(message);
 
-export const dissectResponse = (name: string): string[] =>
-  name
+export const dissectResponse = (name: string, list: string[]): string => {
+  const dissectData = name
     .split(',')
     .join('')
     .trim()
     .split(' ');
+
+  let matchFounded: string = '';
+
+  for (let a of dissectData) {
+    if (list.includes(a)) {
+      console.log('Match Found for ' + a);
+      matchFounded = a;
+      break;
+    }
+  }
+
+  return matchFounded;
+};

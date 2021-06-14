@@ -15,6 +15,7 @@ export const ERROR_DEFAULT_STATE: ErrorType = {
   msge: ERROR_DEFAULT_MESSAGE,
   status: false,
 };
+export const ERROR_NOT_VALID_IMAGE: string = "Doesn't look a dog image";
 
 export const ERROR_IMAGE_SIZE: string = 'Oops! Incorrect file size';
 export const ERROR_IMAGE_TYPE: string = 'Oops! Invalid file type';
