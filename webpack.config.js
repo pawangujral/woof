@@ -59,12 +59,12 @@ const configuration = {
         ],
       },
       {
-        test: /\.(svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[hash].[ext]',
+              name: '[name].[ext]',
               outputPath: 'assets/images',
             },
           },
@@ -101,6 +101,11 @@ const configuration = {
     mainFields: ['browser', 'module', 'main'],
     alias: {
       _components: resolve(__dirname, 'src/components/'),
+      _hooks: resolve(__dirname, 'src/hooks/'),
+      _theme: resolve(__dirname, 'src/theme/'),
+      _utils: resolve(__dirname, 'src/utils/'),
+      _views: resolve(__dirname, 'src/views/'),
+      _assets: resolve(__dirname, 'src/assets/'),
     },
   },
   watch: true,

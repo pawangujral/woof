@@ -1,7 +1,19 @@
 {
+  "name": "@pawangujral/woof-woof-application",
+  "author": "Pawan Gujral",
+  "email": "gujral87@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawangujral/woof.git",
+    "bugs": "https://github.com/pawangujral/woof.git/issues"
+  },
   "dependencies": {
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs-converter": "^3.7.0",
+    "@tensorflow/tfjs-core": "^3.7.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3"
   },
   "description": "Search for dogs",
@@ -10,26 +22,28 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
-    "@types/jest": "^25.1.2",
+    "@types/jest": "^26.0.23",
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.10",
     "@types/webpack-env": "^1.15.1",
     "autoprefixer": "^9.7.4",
     "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.4.2",
+    "css-loader": "^5.2.6",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
+    "file-loader": "^6.2.0",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.3.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.7",
+    "lint-staged": "^11.0.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.19.1",
-    "style-loader": "^1.1.3",
+    "style-loader": "^2.0.0",
     "styled-components": "^5.3.0",
     "stylelint": "^13.2.0",
     "stylelint-config-prettier": "^8.0.1",
@@ -38,8 +52,8 @@
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.10.3"
   },
   "engines": {
@@ -59,25 +73,23 @@
     "*.css": [
       "stylelint --fix"
     ],
-    "*.ts": [
+    "*.{ts}": [
       "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\""
     ],
     "*.{css,js,json,md,ts,tsx,jsx,yaml,yml}": [
       "prettier --write"
     ]
   },
-  "name": "@ass/frontend-assignment-base",
-  "repository": "https://github.com/pawangujral/woof.git",
   "scripts": {
-    "format": "prettier --check \"**/*.{css,js,json,md,ts,yml,yaml}\"",
-    "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,yml,yaml}\"",
+    "format": "prettier --check \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
+    "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
     "husky:lint-staged": "lint-staged",
     "husky:pre-commit": "run-p husky:lint-staged",
-    "lint": "run-p lint:css lint:ts",
+    "lint": "run-p lint:css lint:ts .tsx",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:css:fix": "stylelint --fix 'src/**/*.css'",
     "lint:fix": "run-p lint:*:fix",
-    "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
+    "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"" ,
     "lint:ts:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
     "start": "webpack-dev-server --config ./webpack.config.js",
     "test": "jest",
