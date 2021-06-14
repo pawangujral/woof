@@ -1,4 +1,12 @@
 {
+  "name": "@pawangujral/woof-woof-application",
+  "author": "Pawan Gujral",
+  "email": "gujral87@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawangujral/woof.git",
+    "bugs": "https://github.com/pawangujral/woof.git/issues"
+  },
   "dependencies": {
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow/tfjs-converter": "^3.7.0",
@@ -72,14 +80,12 @@
       "prettier --write"
     ]
   },
-  "name": "@ass/frontend-assignment-base",
-  "repository": "https://github.com/pawangujral/woof.git",
   "scripts": {
     "format": "prettier --check \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
     "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,tsx,yml,yaml}\"",
     "husky:lint-staged": "lint-staged",
     "husky:pre-commit": "run-p husky:lint-staged",
-    "lint": "run-p lint:css lint:ts",
+    "lint": "run-p lint:css lint:ts .tsx",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:css:fix": "stylelint --fix 'src/**/*.css'",
     "lint:fix": "run-p lint:*:fix",
