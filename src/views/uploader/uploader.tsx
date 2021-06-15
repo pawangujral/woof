@@ -1,12 +1,13 @@
-import * as React from 'react';
-import Thumbnail from '_components/thumbnail';
 import Input from '_components/input';
 import Preview from '_components/preview';
+import Thumbnail from '_components/thumbnail';
 import useToasts from '_hooks/use-toasts';
 import { ERROR_NO_PREDICTION, ERROR_NOT_VALID_IMAGE } from '_utils/constants';
-import { imageValidation, dissectResponse } from '_utils/utils';
-import { UploadContainer, Subtitle } from './uploader.style';
+import { dissectResponse, imageValidation } from '_utils/utils';
 import * as mobilenet from '@tensorflow-models/mobilenet';
+import * as React from 'react';
+
+import { Subtitle, UploadContainer } from './uploader.style';
 
 interface UploaderProps {
   breedList: string[];
@@ -16,7 +17,7 @@ interface UploaderProps {
 const Uploader: React.FC<UploaderProps> = ({
   breedList,
   handlePredictionData,
-}: UploaderProps) => {
+}: UploaderProps): JSX.Element => {
   const { addToast } = useToasts();
   const inputElement = React.useRef<HTMLInputElement>(null);
   const previewElement = React.useRef<HTMLImageElement>(null);
@@ -37,8 +38,8 @@ const Uploader: React.FC<UploaderProps> = ({
       }
 
       handleDataSet(predictions[0].className);
-    } catch (err) {
-      addToast({ message: err.message, variant: 'error' });
+    } catch (error) {
+      addToast({ message: error.message, variant: 'error' });
     } finally {
       setLoading(false);
     }
@@ -49,6 +50,7 @@ const Uploader: React.FC<UploaderProps> = ({
 
     if (!result.length) {
       addToast({ message: ERROR_NOT_VALID_IMAGE, variant: 'error' });
+
       return;
     }
 
@@ -56,7 +58,7 @@ const Uploader: React.FC<UploaderProps> = ({
     setBreedName(result);
   };
 
-  React.useEffect(() => {
+  React.useEffect((): void => {
     if (preview) {
       handlePredictionData('');
       setBreedName('');
@@ -64,15 +66,20 @@ const Uploader: React.FC<UploaderProps> = ({
     }
   }, [preview]);
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const file = event.target.files;
 
-    if (file && file.length) {
+    if (file?.length) {
       const { isFileValid, data } = imageValidation(file[0]);
+
       if (!isFileValid) {
         addToast({ message: data, variant: 'error' });
+
         return;
       }
+
       setPreview(data);
     }
   };

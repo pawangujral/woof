@@ -1,11 +1,12 @@
-import * as React from 'react';
-import Header from '_views/common/header';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Routes } from './routes';
 import { ToastProvider } from '_hooks/use-toasts';
 import GlobalStyle from '_theme/global-styles';
+import Header from '_views/common/header';
+import * as React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
+import { Routes } from './routes';
+
+const App: React.FC = (): JSX.Element => {
   return (
     <Router basename="/">
       <ToastProvider>
@@ -19,6 +20,6 @@ function App() {
       </ToastProvider>
     </Router>
   );
-}
+};
 
 export default App;

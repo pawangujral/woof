@@ -1,14 +1,15 @@
-import * as React from 'react';
 import LoaderImage from '_assets/images/landing.png';
 import NotFoundImage from '_assets/images/notfound.png';
 import ReadyImage from '_assets/images/ready.png';
+import * as React from 'react';
+
 import { FigureCard } from './thumbnail.style';
 
 interface PlaceHolderProps {
+  alt: string;
+  loading?: 'eager' | 'lazy';
   src: string;
   width: string;
-  loading?: 'eager' | 'lazy';
-  alt: string;
 }
 
 const Thumbnail: React.FC<PlaceHolderProps> = ({
@@ -16,8 +17,8 @@ const Thumbnail: React.FC<PlaceHolderProps> = ({
   width,
   loading = 'eager',
   alt,
-}: PlaceHolderProps) => {
-  const renderImage = () => {
+}: PlaceHolderProps): JSX.Element => {
+  const renderImage = (): JSX.Element | string => {
     switch (src) {
       case 'landing':
         return LoaderImage;

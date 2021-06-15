@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { render, RenderOptions } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import { ToastProvider } from '_hooks/use-toasts';
+import { render, RenderOptions } from '@testing-library/react';
+import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 const AllTheProviders: React.FC = ({ children }) => {
   return (

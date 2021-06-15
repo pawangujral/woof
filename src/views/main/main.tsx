@@ -1,20 +1,20 @@
-import * as React from 'react';
-import Uploader from '_views/uploader';
-import Gallery from '_views/gallery';
 import Thumbnail from '_components/thumbnail';
+import useToasts from '_hooks/use-toasts';
 import {
   DOGS_API_ENDPOINT_BREED_ALL,
   ERROR_DEFAULT_MESSAGE,
 } from '_utils/constants';
 import { flatReponse } from '_utils/utils';
-import useToasts from '_hooks/use-toasts';
+import Gallery from '_views/gallery';
+import Uploader from '_views/uploader';
+import * as React from 'react';
 
-const Main: React.FC = () => {
+const Main: React.FC = (): JSX.Element => {
   const { addToast } = useToasts();
   const [breedList, setBreedList] = React.useState<string[]>([]);
   const [hasPrediction, setPrediction] = React.useState<string>('');
 
-  const fetchAllBreeds = async () => {
+  const fetchAllBreeds = async (): Promise<void> => {
     try {
       const respose = await fetch(DOGS_API_ENDPOINT_BREED_ALL);
       const { message, status } = await respose.json();
@@ -25,16 +25,17 @@ const Main: React.FC = () => {
 
       const data = flatReponse(message);
       setBreedList(data);
-    } catch (err) {
-      addToast({ message: err.message, variant: 'error' });
+    } catch (error) {
+      addToast({ message: error.message, variant: 'error' });
     }
   };
 
-  React.useEffect(() => {
+  React.useEffect((): void => {
     fetchAllBreeds();
   }, []);
 
-  const handlePredictionData = (response: string) => setPrediction(response);
+  const handlePredictionData = (response: string): void =>
+    setPrediction(response);
 
   return (
     <>

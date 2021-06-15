@@ -1,8 +1,8 @@
-import * as React from 'react';
 import Button from '_components/button';
 import Thumbnail from '_components/thumbnail';
+import * as React from 'react';
 
-const NotFound: React.FC = () => {
+const NotFound: React.FC = (): JSX.Element => {
   return (
     <main>
       <h1>

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Button from '_components/button';
 import Thumbnail from '_components/thumbnail';
 import useLazy from '_hooks/use-lazy';
@@ -7,7 +6,9 @@ import {
   DOGS_API_ENDPOINT_BREED_SINGLE,
   ERROR_NO_COLLECTION,
 } from '_utils/constants';
-import { List, ListContainer, HelperText } from './gallery.style';
+import * as React from 'react';
+
+import { HelperText, List, ListContainer } from './gallery.style';
 
 interface GalleryProps {
   breed: string;
@@ -15,14 +16,16 @@ interface GalleryProps {
 
 const MAX_FETCH_COUNT: number = 10;
 
-const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
-  const loadMoreRef = React.useRef<HTMLButtonElement>(null);
-  const onScreen = useLazy(loadMoreRef);
+const Gallery: React.FC<GalleryProps> = ({
+  breed,
+}: GalleryProps): JSX.Element => {
+  const loadMoreReference = React.useRef<HTMLButtonElement>(null);
+  const onScreen = useLazy(loadMoreReference);
   const { addToast } = useToasts();
   const [collection, setCollection] = React.useState<string[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(false);
 
-  const fetchAnimalData = async () => {
+  const fetchAnimalData = async (): Promise<void> => {
     try {
       setLoading(true);
       const response = await fetch(
@@ -37,15 +40,16 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
       if (!message.length) {
         throw new Error(ERROR_NO_COLLECTION);
       }
-      setCollection(prevState => [...prevState, ...message]);
-    } catch (err) {
-      addToast({ message: err.message, variant: 'error' });
+
+      setCollection(previousState => [...previousState, ...message]);
+    } catch (error) {
+      addToast({ message: error.message, variant: 'error' });
     } finally {
       setLoading(false);
     }
   };
 
-  React.useEffect(() => {
+  React.useEffect((): void => {
     fetchAnimalData();
   }, [breed, onScreen]);
 
@@ -74,7 +78,7 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
       </List>
 
       {isLoading && <p>loading more Images.....</p>}
-      <Button ref={loadMoreRef} variant="text" text="load more" />
+      <Button ref={loadMoreReference} variant="text" text="load more" />
     </ListContainer>
   );
 };

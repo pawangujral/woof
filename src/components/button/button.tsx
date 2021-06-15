@@ -1,12 +1,13 @@
 import * as React from 'react';
+
 import { ButtonWrapper, LinkWrapper } from './button.style';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   component?: 'button' | 'link';
-  handleOnClick?: (data: any) => void;
+  handleOnClick?: (data: unknown) => void;
+  path?: string;
   text: string;
   variant?: string;
-  path?: string;
 }
 
 const Button: React.FC<ButtonProps & {
@@ -21,9 +22,9 @@ const Button: React.FC<ButtonProps & {
       component = 'button',
       path = '/',
     }: ButtonProps,
-    ref,
-  ) => {
-    const renderAction = () => {
+    reference,
+  ): JSX.Element => {
+    const renderAction = (): JSX.Element => {
       if (component === 'link') {
         return (
           <LinkWrapper color={color} variant={variant} to={path}>
@@ -34,7 +35,7 @@ const Button: React.FC<ButtonProps & {
 
       return (
         <ButtonWrapper
-          ref={ref}
+          ref={reference}
           onClick={handleOnClick}
           color={color}
           variant={variant}

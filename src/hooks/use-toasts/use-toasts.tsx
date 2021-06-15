@@ -1,5 +1,6 @@
+import { toastMessagesType, toastType } from '_utils/types';
 import * as React from 'react';
-import { toastType, toastMessagesType, toastProviderType } from '_utils/types';
+
 import { ToastContainer, ToastMessage } from './use-toasts.style';
 
 interface providerProps {
@@ -10,24 +11,26 @@ const TOAST_DEFAULT_DATA: toastMessagesType = {
   toasts: [],
 };
 
-const Ctx = React.createContext(TOAST_DEFAULT_DATA);
+const Context = React.createContext(TOAST_DEFAULT_DATA);
+
+const MAX_TIMEOUT_TOASTS: number = 5000;
 
 export const ToastProvider: React.FC<providerProps> = ({
   children,
-}: providerProps) => {
+}: providerProps): JSX.Element => {
   const [state, setState] = React.useState<toastMessagesType>(
     TOAST_DEFAULT_DATA,
   );
 
-  React.useEffect(() => {
-    const toastTimeOut = setTimeout(() => {
+  React.useEffect((): void => {
+    const toastTimeOut = setTimeout((): void => {
       setState({ toasts: [] });
-    }, 5000);
+    }, MAX_TIMEOUT_TOASTS);
 
     return () => clearTimeout(toastTimeOut);
   }, [state.toasts]);
 
-  const addToast = (toast: toastType) =>
+  const addToast = (toast: toastType): void =>
     setState({ toasts: [...state.toasts, toast] });
 
   const methods = {
@@ -35,26 +38,32 @@ export const ToastProvider: React.FC<providerProps> = ({
   };
 
   return (
-    <Ctx.Provider value={{ ...state, ...methods }}>
+    <Context.Provider value={{ ...state, ...methods }}>
       {children}
       <ToastContainer>
-        {state.toasts.map((item, index) => {
-          return (
-            <ToastMessage key={index} variant={item.variant}>
-              {item.message}
-            </ToastMessage>
-          );
-        })}
+        {React.Children.toArray(
+          state.toasts.map(
+            (item): JSX.Element => {
+              return (
+                <ToastMessage variant={item.variant}>
+                  {item.message}
+                </ToastMessage>
+              );
+            },
+          ),
+        )}
       </ToastContainer>
-    </Ctx.Provider>
+    </Context.Provider>
   );
 };
 
 export const useNotification = () => {
-  const context = React.useContext(Ctx) as toastProviderType;
+  const context = React.useContext(Context);
+
   if (context === undefined) {
     throw new Error('useToast must be used within a ToastProvider');
   }
+
   return context;
 };
 
