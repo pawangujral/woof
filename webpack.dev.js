@@ -15,4 +15,8 @@ module.exports = merge(common, {
   },
   devtool: 'cheap-module-eval-source-map',
   mode: 'development',
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/u,
+  },
 });
