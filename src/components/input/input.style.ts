@@ -7,7 +7,7 @@ export const InputLabel = styled.label<{ disabled: boolean }>`
   display: block;
   margin: var(--base-spacing) auto;
   max-width: 200px;
-  opacity: ${({ disabled }) => (disabled ? '0.1' : '1')};
+  opacity: ${({ disabled }): string => (disabled ? '0.1' : '1')};
   padding: var(--base-spacing);
   position: relative;
   width: 100%;

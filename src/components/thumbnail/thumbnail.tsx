@@ -1,7 +1,8 @@
 import * as React from 'react';
 import LoaderImage from '_assets/images/landing.png';
 import NotFoundImage from '_assets/images/notfound.png';
-import { FigureCard } from './card.style';
+import ReadyImage from '_assets/images/ready.png';
+import { FigureCard } from './thumbnail.style';
 
 interface PlaceHolderProps {
   src: string;
@@ -10,7 +11,7 @@ interface PlaceHolderProps {
   alt: string;
 }
 
-const Card: React.FC<PlaceHolderProps> = ({
+const Thumbnail: React.FC<PlaceHolderProps> = ({
   src,
   width,
   loading = 'eager',
@@ -22,6 +23,8 @@ const Card: React.FC<PlaceHolderProps> = ({
         return LoaderImage;
       case 'notfound':
         return NotFoundImage;
+      case 'ready':
+        return ReadyImage;
       default:
         return src;
     }
@@ -30,9 +33,8 @@ const Card: React.FC<PlaceHolderProps> = ({
   return (
     <FigureCard width={width}>
       <img src={renderImage()} loading={loading} alt={alt} />
-      <figcaption></figcaption>
     </FigureCard>
   );
 };
 
-export default React.memo(Card);
+export default React.memo(Thumbnail);

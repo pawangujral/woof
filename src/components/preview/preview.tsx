@@ -16,16 +16,18 @@ const Preview: React.FC<PreviewProps & {
       <>
         <PreviewContainer overlay={isLoading}>
           <img src={src} ref={ref} alt={label} />
-          {!isLoading && title && (
-            <figcaption>
-              Your dog breed is <span>{title}</span>
-            </figcaption>
-          )}
-          {!isLoading && !title && (
-            <figcaption>
-              Did you really upload your <span>dog</span> image?
-            </figcaption>
-          )}
+          <figcaption>
+            {!isLoading && title && (
+              <>
+                Your dog breed is <span>{title}</span>
+              </>
+            )}
+            {!isLoading && !title && (
+              <>
+                Did you really upload your <span>dog</span> image?
+              </>
+            )}
+          </figcaption>
         </PreviewContainer>
         <p>Want to try again ?</p>
       </>

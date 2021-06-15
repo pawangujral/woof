@@ -33,7 +33,7 @@ export const ButtonWrapper = styled.button<{ variant: string }>`
   cursor: pointer;
   font-weight: 400;
   padding: 10px 30px;
-  ${({ variant }: any): string => handleVariant(variant)};
+  ${({ variant }): string => handleVariant(variant)};
 `;
 
 export const LinkWrapper = styled(Link)<{ variant: string }>`
@@ -45,5 +45,5 @@ export const LinkWrapper = styled(Link)<{ variant: string }>`
   text-align: center;
   text-decoration: none;
   width: fit-content;
-  ${({ variant }: any): string => handleVariant(variant)};
+  ${({ variant }): string => handleVariant(variant)};
 `;

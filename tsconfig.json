@@ -25,6 +25,7 @@
     "sourceMap": true,
     "tsBuildInfoFile": "./.cache/typescript",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "baseUrl": "/",
     "paths": {
       "_components/*": ["src/components/*"],

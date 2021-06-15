@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from '_components/card';
+import Thumbnail from '_components/thumbnail';
 import Input from '_components/input';
 import Preview from '_components/preview';
 import useToasts from '_hooks/use-toasts';
@@ -79,10 +79,6 @@ const Uploader: React.FC<UploaderProps> = ({
 
   return (
     <UploadContainer>
-      <h2>
-        want to see a <span>Magic trick?</span>
-      </h2>
-
       {preview ? (
         <Preview
           isLoading={isLoading}
@@ -97,7 +93,7 @@ const Uploader: React.FC<UploaderProps> = ({
             Upload your dog photo <span>&amp;</span> we will tell you which
             breed it is.
           </Subtitle>
-          <Card src="landing" width="400px" alt="landing Illustration" />
+          <Thumbnail src="landing" width="400px" alt="landing Illustration" />
         </>
       )}
 
