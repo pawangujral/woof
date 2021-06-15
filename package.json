@@ -90,8 +90,6 @@
     "husky:lint-staged": "lint-staged",
     "husky:pre-commit": "run-p husky:lint-staged",
     "lint": "run-p lint:ts",
-    "lint:css": "stylelint 'src/**/*.css'",
-    "lint:css:fix": "stylelint --fix 'src/**/*.css'",
     "lint:fix": "run-p lint:*:fix",
     "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
     "lint:ts:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",

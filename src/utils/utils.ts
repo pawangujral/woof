@@ -1,10 +1,10 @@
 import { ERROR_IMAGE_SIZE, ERROR_IMAGE_TYPE } from './constants';
 import { fileType } from './types';
 
-type ImageValidationReturn = {
+interface ImageValidationReturn {
   data: string;
   isFileValid: boolean;
-};
+}
 
 export const imageValidation = (file: fileType): ImageValidationReturn => {
   const MAX_FILE_SIZE: number = 2000000;
@@ -36,7 +36,6 @@ export const dissectResponse = (name: string, list: string[]): string => {
 
   for (const data of dissectData) {
     if (list.includes(data)) {
-      console.log('Match Found for ' + data);
       return data;
     }
   }

@@ -1,5 +1,5 @@
-import * as styled from 'styled-components';
 import LoaderImage from '_assets/images/bg.svg';
+import * as styled from 'styled-components';
 
 const GlobalStyle = styled.createGlobalStyle`
   :root {
@@ -21,6 +21,7 @@ const GlobalStyle = styled.createGlobalStyle`
   }
 
   body {
+    background-attachment: fixed;
     background-color: var(--light-background-color);
     background-image: url(${LoaderImage});
     background-repeat: repeat;
@@ -57,6 +58,12 @@ const GlobalStyle = styled.createGlobalStyle`
     span {
       color: var(--primary-color);
       font-weight: 700;
+    }
+  }
+
+  @media (max-width: 576px) {
+    main {
+      margin: 30px;
     }
   }
 `;

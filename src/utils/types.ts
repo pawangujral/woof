@@ -1,39 +1,39 @@
-export type AnimalResponseType = {
+export interface AnimalResponseType {
   code?: number;
   message: string | string[];
   status: string;
-};
+}
 
 export interface ModelResponseType {
   className: string;
   probability: number;
 }
 
-export type ErrorType = {
+export interface ErrorType {
   msge: string;
   status: boolean;
-};
+}
 
-export type toastType = {
+export interface toastType {
   message: string;
   variant?: 'default' | 'success' | 'warning' | 'error';
-};
+}
 
-export type toastMessagesType = {
+export interface toastMessagesType {
   toasts: toastType[];
-};
+}
 
 export interface toastProviderType extends toastMessagesType {
   addToast: (toast: toastType) => void;
 }
 
-export type fileType = {
+export interface fileType {
   size: number;
   type: string;
-};
+}
 
-export type RoutesType = {
+export interface RoutesType {
   component: React.FC;
   path: string;
   protectedRoute: boolean;
-};
+}

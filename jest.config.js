@@ -1,24 +1,23 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  roots: ['<rootDir>/src'],
-  transform: {
-    '\\.(js|jsx|ts)?$': 'ts-jest',
-  },
-  // finds test
-  moduleFileExtensions: ['js', 'ts', 'tsx', 'jsx', 'json', 'node'],
-  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-    '@testing-library/react/cleanup-after-each',
-  ],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  moduleFileExtensions: ['js', 'ts', 'jsx', 'json', 'node'],
   moduleNameMapper: {
+    '^_assets/(.*)$': '<rootDir>/src/assets/$1',
     '^_components/(.*)$': '<rootDir>/src/components/$1',
     '^_hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '^_theme/(.*)$': '<rootDir>/src/theme/$1',
     '^_utils/(.*)$': '<rootDir>/src/utils/$1',
     '^_views/(.*)$': '<rootDir>/src/views/$1',
-    '^_assets/(.*)$': '<rootDir>/src/assets/$1',
+  },
+  preset: 'ts-jest',
+  roots: ['<rootDir>/src'],
+  setupFilesAfterEnv: [
+    '<rootDir>/src/setup-tests.ts',
+    '@testing-library/jest-dom/extend-expect',
+    '@testing-library/react/cleanup-after-each',
+  ],
+  testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  transform: {
+    '\\.(js|jsx|ts)?$': 'ts-jest',
   },
 };
