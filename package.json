@@ -54,7 +54,6 @@
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
-    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^5.8.0"
   },
@@ -94,7 +93,7 @@
     "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
     "lint:ts:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js && node server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "types": "tsc --noEmit"
