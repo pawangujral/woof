@@ -80,12 +80,12 @@ All component folders must follow below structure to keep consistancy in
 project.
 
 ```bash
-├── componentFolderName
-    ├── componentFolderName.tsx
-    ├── componentFolderName.css
+├── component-folderName
+    ├── component-folderName.tsx
+    ├── component-folderName.css
     ├── index.ts
     ├── __tests__
-        ├── componentFolderName.test.tsx
+        ├── component-folderName.test.tsx
 ```
 
 #### Project src folder

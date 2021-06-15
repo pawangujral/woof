@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 const useLazy = (reference: any) => {
-  console.log(typeof reference);
   const [isIntersecting, setIntersecting] = React.useState(false);
 
   const observer = new IntersectionObserver(([entry]) =>
@@ -9,7 +8,7 @@ const useLazy = (reference: any) => {
   );
 
   React.useEffect(() => {
-    if (!reference) {
+    if (!reference.current) {
       throw new Error('ref is not assigned');
     }
     observer.observe(reference.current);
@@ -21,4 +20,5 @@ const useLazy = (reference: any) => {
 
   return isIntersecting;
 };
+
 export default useLazy;

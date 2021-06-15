@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ListContainer = styled.section`
+  border-top: 1px dashed var(--accent-color);
   padding: var(--base-spacing);
 `;
 
@@ -10,7 +11,7 @@ export const List = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   list-style: none;
-  margin: 0;
+  margin: 30px 0 0 0;
   padding: 0;
 
   figure {
@@ -40,4 +41,8 @@ export const Loader = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
+`;
+
+export const HelperText = styled.p`
+  text-align: center;
 `;

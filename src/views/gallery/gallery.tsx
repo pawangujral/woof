@@ -7,7 +7,7 @@ import {
   DOGS_API_ENDPOINT_BREED_SINGLE,
   ERROR_NO_COLLECTION,
 } from '_utils/constants';
-import { List, ListContainer } from './gallery.style';
+import { List, ListContainer, HelperText } from './gallery.style';
 
 interface GalleryProps {
   breed: string;
@@ -49,23 +49,30 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
     fetchAnimalData();
   }, [breed, onScreen]);
 
+  if (!isLoading && !collection.length) {
+    <HelperText>Oops not able to find anything for you</HelperText>;
+  }
+
   return (
     <ListContainer>
       <h2>
-        Show some <span>love</span> to them as well
+        Show more <span>love</span>
       </h2>
+
       <List>
-        {React.Children.toArray(
-          collection.map((item: string, index: number) => (
-            <Thumbnail
-              src={item}
-              loading="lazy"
-              alt={`dog ${index}`}
-              width="100%"
-            />
-          )),
-        )}
+        {collection.length &&
+          React.Children.toArray(
+            collection.map((item: string, index: number) => (
+              <Thumbnail
+                src={item}
+                loading="lazy"
+                alt={`dog ${index}`}
+                width="100%"
+              />
+            )),
+          )}
       </List>
+
       {isLoading && <p>loading more Images.....</p>}
       <Button ref={loadMoreRef} variant="text" text="load more" />
     </ListContainer>
