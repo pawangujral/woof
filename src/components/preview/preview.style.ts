@@ -9,9 +9,9 @@ export const PreviewContainer = styled.figure<{ overlay: boolean }>`
   padding: var(--base-spacing);
   position: relative;
 
-  ${({ overlay }) =>
-    overlay &&
-    `&:before {
+  ${({ overlay }): string =>
+    overlay
+      ? `&:before {
             content: 'abracadabra ...';
             position: absolute;
             top:0;
@@ -26,7 +26,8 @@ export const PreviewContainer = styled.figure<{ overlay: boolean }>`
             justify-content: center;
             align-items: center;
 
-        } `}
+        } `
+      : ''}
 
   figcaption {
     margin-top: var(--base-spacing);

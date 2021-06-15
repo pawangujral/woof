@@ -30,8 +30,8 @@ export const ToastContainer = styled.div`
 `;
 
 export const ToastMessage = styled.p<{
-  variant: string | undefined;
   key: number;
+  variant: string | undefined;
 }>`
   background: #2196f3;
   border-radius: 6px;

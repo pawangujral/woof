@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '_components/button';
-import Card from '_components/card';
+import Thumbnail from '_components/thumbnail';
 import useLazy from '_hooks/use-lazy';
 import useToasts from '_hooks/use-toasts';
 import {
@@ -13,6 +13,8 @@ interface GalleryProps {
   breed: string;
 }
 
+const MAX_FETCH_COUNT: number = 10;
+
 const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
   const loadMoreRef = React.useRef<HTMLButtonElement>(null);
   const onScreen = useLazy(loadMoreRef);
@@ -24,7 +26,7 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${DOGS_API_ENDPOINT_BREED_SINGLE}/${breed}/images/random/2`,
+        `${DOGS_API_ENDPOINT_BREED_SINGLE}/${breed}/images/random/${MAX_FETCH_COUNT}`,
       );
       const { status, message } = await response.json();
 
@@ -53,15 +55,16 @@ const Gallery: React.FC<GalleryProps> = ({ breed }: GalleryProps) => {
         Show some <span>love</span> to them as well
       </h2>
       <List>
-        {collection.map((item: string, index: number) => (
-          <Card
-            key={index}
-            src={item}
-            loading="lazy"
-            alt={`dog ${index}`}
-            width="100%"
-          />
-        ))}
+        {React.Children.toArray(
+          collection.map((item: string, index: number) => (
+            <Thumbnail
+              src={item}
+              loading="lazy"
+              alt={`dog ${index}`}
+              width="100%"
+            />
+          )),
+        )}
       </List>
       {isLoading && <p>loading more Images.....</p>}
       <Button ref={loadMoreRef} variant="text" text="load more" />

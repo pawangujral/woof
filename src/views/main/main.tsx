@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Uploader from '_views/uploader';
 import Gallery from '_views/gallery';
+import Thumbnail from '_components/thumbnail';
 import {
   DOGS_API_ENDPOINT_BREED_ALL,
   ERROR_DEFAULT_MESSAGE,
@@ -35,27 +36,29 @@ const Main: React.FC = () => {
 
   const handlePredictionData = (response: string) => setPrediction(response);
 
-  if (!breedList.length) {
-    return (
-      <>
-        <main>
-          <h2>
-            <span>Please wait</span>
-          </h2>
-          <p>While we make our stage ready for you.</p>
-        </main>
-      </>
-    );
-  }
-
   return (
     <>
       <main>
-        <Uploader
-          breedList={breedList}
-          handlePredictionData={handlePredictionData}
-        />
-        {hasPrediction && <Gallery breed={hasPrediction} />}
+        <h2>
+          want to see a <span>Magic trick?</span>
+        </h2>
+
+        {!breedList.length ? (
+          <>
+            <Thumbnail src="ready" width="400px" alt="landing Illustration" />
+            <p>
+              <span>Please wait</span> , While we make our stage ready for you.
+            </p>
+          </>
+        ) : (
+          <>
+            <Uploader
+              breedList={breedList}
+              handlePredictionData={handlePredictionData}
+            />
+            {hasPrediction && <Gallery breed={hasPrediction} />}
+          </>
+        )}
       </main>
     </>
   );

@@ -1,26 +1,58 @@
-const { join, resolve } = require('path');
-
+const { resolve } = require('path');
 const autoPrefixer = require('autoprefixer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-const configuration = {
-  cache: true,
-  devServer: {
-    compress: false,
-    contentBase: join(__dirname, 'dist'),
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    overlay: true,
-    writeToDisk: false,
-  },
-  devtool: 'cheap-module-eval-source-map',
+module.exports = {
   entry: {
     app: './src/index.tsx',
   },
-  mode: 'development',
+  plugins: [
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: true,
+      dry: false,
+      protectWebpackAssets: true,
+      verbose: false,
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      title: 'Project Tabber',
+      template: 'src/index.html',
+      hash: true,
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+  ],
+  output: {
+    filename: 'chunks/[name].js',
+    pathinfo: true,
+    publicPath: '/',
+  },
+  performance: {
+    hints: false,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    mainFields: ['browser', 'module', 'main'],
+    alias: {
+      _components: resolve(__dirname, 'src/components/'),
+      _hooks: resolve(__dirname, 'src/hooks/'),
+      _theme: resolve(__dirname, 'src/theme/'),
+      _utils: resolve(__dirname, 'src/utils/'),
+      _views: resolve(__dirname, 'src/views/'),
+      _assets: resolve(__dirname, 'src/assets/'),
+    },
+  },
   module: {
     rules: [
       {
@@ -64,7 +96,7 @@ const configuration = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
+              name: '[hash].[ext]',
               outputPath: 'assets/images',
             },
           },
@@ -72,46 +104,8 @@ const configuration = {
       },
     ],
   },
-  output: {
-    filename: 'chunks/[name].js',
-    pathinfo: true,
-    publicPath: '/',
-  },
-  performance: {
-    hints: false,
-  },
-  plugins: [
-    new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: true,
-      dry: false,
-      protectWebpackAssets: true,
-      verbose: false,
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      minify: false,
-      template: 'src/index.html',
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ],
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    mainFields: ['browser', 'module', 'main'],
-    alias: {
-      _components: resolve(__dirname, 'src/components/'),
-      _hooks: resolve(__dirname, 'src/hooks/'),
-      _theme: resolve(__dirname, 'src/theme/'),
-      _utils: resolve(__dirname, 'src/utils/'),
-      _views: resolve(__dirname, 'src/views/'),
-      _assets: resolve(__dirname, 'src/assets/'),
-    },
-  },
   watch: true,
   watchOptions: {
     ignored: /node_modules/u,
   },
 };
-
-module.exports = configuration;
