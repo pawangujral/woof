@@ -94,8 +94,8 @@
     "lint:fix": "run-p lint:*:fix",
     "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
     "lint:ts:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js && node server.js",
+    "start": "node server.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "types": "tsc --noEmit"
