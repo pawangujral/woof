@@ -19,4 +19,7 @@ module.exports = merge(common, {
   watchOptions: {
     ignored: /node_modules/u,
   },
+  performance: {
+    hints: false,
+  },
 });

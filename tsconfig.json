@@ -14,7 +14,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "pretty": true,
-    "rootDir": "src",
     "strict": true,
     "strictNullChecks": true,
     "target": "es2019",
@@ -23,7 +22,6 @@
     "incremental": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "tsBuildInfoFile": "./.cache/typescript",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "baseUrl": "/",
@@ -34,7 +32,8 @@
       "_utils/*": ["src/utils/*"],
       "_views/*": ["src/views/*"],
       "_assets/*": ["src/assets/*"]
-    }
+    },
+    "tsBuildInfoFile": "./.cache/typescript"
   },
   "files": ["src/index.tsx"],
   "include": ["./**/*"],

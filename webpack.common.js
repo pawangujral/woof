@@ -38,9 +38,6 @@ module.exports = {
     pathinfo: true,
     publicPath: '/',
   },
-  performance: {
-    hints: false,
-  },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     mainFields: ['browser', 'module', 'main'],
