@@ -52,7 +52,7 @@ const GlobalStyle = styled.createGlobalStyle`
   h5,
   h6 {
     font-weight: 300;
-    margin: var(--base-spacing) 0;
+    margin: 30px 0 15px 0;
 
     span {
       color: var(--primary-color);

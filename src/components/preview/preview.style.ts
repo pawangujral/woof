@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const PreviewContainer = styled.figure<{ overlay: boolean }>`
-  background: #f5f8fc;
+  background: var(--light-background-color);
   border-radius: var(--base-radius);
   margin: var(--base-spacing) auto;
-  max-width: fit-content;
+  max-width: 400px;
   overflow: hidden;
   padding: var(--base-spacing);
   position: relative;

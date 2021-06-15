@@ -27,29 +27,19 @@ To install project dependencies, you can run at root folder:
 
 ```bash
 cd woof
-yarn
-
-OR
-
-cd woof
 npm install
 ```
 
 #### Third-party utility libraries list
 
-The project is using `styled-components` for dynamic class name handling as
-third party dependencies & `jest-axe` for accessibility testing.
+The project is using `styled-components` for dynamic class name handling.
 
-### Start
+### Start local Development
 
 To start the project In the project directory, you can run:
 
 ```bash
-yarn start
-
-OR
-
-npm run start
+npm run dev
 ```
 
 Runs the app in the development mode.\
@@ -59,19 +49,13 @@ page will reload if you make edits. You will also see any lint errors in the con
 ### Build
 
 ```bash
-yarn build
-
-OR
-
 npm run build
 ```
 
-Builds the app for production to the `build` folder. You can run with static
-local server on mac.
+Builds the app for production to the `dist` folder. You can run prod build:
 
 ```bash
-cd build
-python -m SimpleHTTPServer 8080
+npm run start
 ```
 
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
@@ -114,87 +98,67 @@ order-tracking
 ├── node_modules
 ├── package.json
 ├── .gitignore
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
 ├── src
     ├── app.tsx
-    ├── index.css
+    ├── index.html
     ├── index.tsx
-    ├── react-app-env.d.ts
-    ├── reportWebVitals.ts
-    ├── setupTests.ts
-    ├── __tests__
-        ├── app.test.tsx
+    ├── routes.ts
+    ├── manifest.json
+    ├── assets
+    │    ├── images
     ├── components
         ├── button
         │    ├── button.style.ts
         │    ├── button.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── button.test.tsx
-        ├── card
-        │    ├── card.style.ts
-        │    ├── card.tsx
+        ├── input
+        │    ├── input.style.ts
+        │    ├── input.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── card.test.tsx
-    ├── container
-        ├── error
-        │    ├── error.style.ts
-        │    ├── error.tsx
+        ├── preview
+        │    ├── preview.style.ts
+        │    ├── preview.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── error.test.tsx
-        ├── header
-        │    ├── header.style.ts
-        │    ├── header.tsx
+        ├── thumbnail
+        │    ├── thumbnail.style.ts
+        │    ├── thumbnail.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── header.test.tsx
-        ├── loader
-        │    ├── loader.style.ts
-        │    ├── loader.tsx
+    ├── hooks
+        ├── use-lazy
+        │    ├── use-lazy.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── loader.test.tsx
-        ├── notFound
-        │    ├── notFound.style.ts
-        │    ├── notFound.tsx
+        ├── use-toasts
+        │    ├── use-toasts.style.ts
+        │    ├── use-toasts.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── notFound.test.tsx
-    ├── context
-        ├── quizContext
-            ├── quizProvider.tsx
-            ├── quizStore.ts
-    ├── router
-        ├── route.ts
-    ├── style
-        ├── global.css
+    ├── theme
+        ├── global-styles.css
     ├── utils
         ├── constants.ts
         ├── types.ts
+        ├── utils.ts
     ├── views
-        ├── consent
-        │    ├── consent.tsx
-        │    ├── consent.style.ts
+        ├── common
+        │    ├── header
+        │    │    ├── header.tsx
+        │    │    ├── header.style.ts
+        │    │    ├── index.ts
+        │    ├── not-found
+        │    │    ├── not-found.tsx
+        │    │    ├── not-found.style.ts
+        │    │    ├── index.ts
+        ├── gallery
+        │    ├── gallery.tsx
+        │    ├── gallery.style.ts
         │    ├── index.ts
-        │    ├── __tests__
-        │        ├── consent.test.tsx
-        ├── quiz
-        │    ├── quiz.style.ts
-        │    ├── quiz.tsx
+        ├── main
+        │    ├── main.style.ts
+        │    ├── main.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │            ├── quiz.test.tsx
-        ├── result
-        │    ├── result.style.ts
-        │    ├── result.tsx
+        ├── uploader
+        │    ├── uploader.style.ts
+        │    ├── uploader.tsx
         │    ├── index.ts
-        │    ├── __tests__
-        │            ├── result.test.tsx
 
 ```
 
@@ -215,14 +179,7 @@ e.g :
 For code coverage run:
 
 ```bash
-yarn test
-Or
 npm run test
-
-// To generate coverage report add following to package.json test script. it will be generate in coverage folder at root level.
-
-  "test": "react-scripts test --coverage",
-
 ```
 
 You can use testing method like `getByText`, `getByTestID`, `getByTitle`,
@@ -239,13 +196,15 @@ _Note: this is currently in TODO list & not yet implemented._
 
 ## Links
 
+- [@tensorflow/tfjs-models](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet)
 - [React](https://reactjs.org/)
 - [styled-components](http://styled-components.com/)
 - [React Testing Libary](https://testing-library.com/docs/react-testing-library/intro/)
-- [Jest-axe](https://www.npmjs.com/package/jest-axe)
+- [webpack](https://webpack.js.org/)
 
 ## Next additional features/functionalites
 
 - Unit test cases
 - Usability implmentation (fully ADA compliance)
 - Locale support for different languages
+- Fix linting issues

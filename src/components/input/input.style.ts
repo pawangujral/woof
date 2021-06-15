@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const InputLabel = styled.label<{ disabled: boolean }>`
   background: var(--primary-color);
+  border-radius: var(--base-radius);
   color: var(--color-over-solid);
   cursor: pointer;
   display: block;

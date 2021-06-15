@@ -29,7 +29,7 @@ const Preview: React.FC<PreviewProps & {
             )}
           </figcaption>
         </PreviewContainer>
-        <p>Want to try again ?</p>
+        <p>want to try again ?</p>
       </>
     );
   },
