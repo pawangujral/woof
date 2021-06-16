@@ -2,6 +2,8 @@
 
 Dog Image recognition react app with tensorflow/tfjs-models
 
+Hosted on heroku: [woof](https://woof-pawangujral.herokuapp.com/)
+
 ## Getting Started
 
 Clone app to a destination folder. The application is built on React framework.
