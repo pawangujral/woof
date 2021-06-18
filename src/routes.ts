@@ -1,6 +1,6 @@
-import { RoutesType } from '_utils/types';
-import NotFound from '_views/common/not-found';
-import Main from '_views/main';
+import { RoutesType } from '_/utils/types';
+import NotFound from '_/views/common/not-found';
+import Main from '_/views/main';
 
 export const Routes: RoutesType[] = [
   {

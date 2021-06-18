@@ -1,11 +1,11 @@
-import Button from '_components/button';
-import Thumbnail from '_components/thumbnail';
-import useLazy from '_hooks/use-lazy';
-import useToasts from '_hooks/use-toasts';
+import Button from '_/components/button';
+import Thumbnail from '_/components/thumbnail';
+import useLazy from '_/hooks/use-lazy';
+import useToasts from '_/hooks/use-toasts';
 import {
   DOGS_API_ENDPOINT_BREED_SINGLE,
   ERROR_NO_COLLECTION,
-} from '_utils/constants';
+} from '_/utils/constants';
 import * as React from 'react';
 
 import { HelperText, List, ListContainer } from './gallery.style';

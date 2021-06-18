@@ -1,4 +1,4 @@
-import LoaderImage from '_assets/images/bg.svg';
+import LoaderImage from '_/assets/images/bg.svg';
 import * as styled from 'styled-components';
 
 const GlobalStyle = styled.createGlobalStyle`

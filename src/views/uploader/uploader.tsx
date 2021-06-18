@@ -1,9 +1,9 @@
-import Input from '_components/input';
-import Preview from '_components/preview';
-import Thumbnail from '_components/thumbnail';
-import useToasts from '_hooks/use-toasts';
-import { ERROR_NO_PREDICTION, ERROR_NOT_VALID_IMAGE } from '_utils/constants';
-import { dissectResponse, imageValidation } from '_utils/utils';
+import Input from '_/components/input';
+import Preview from '_/components/preview';
+import Thumbnail from '_/components/thumbnail';
+import useToasts from '_/hooks/use-toasts';
+import { ERROR_NO_PREDICTION, ERROR_NOT_VALID_IMAGE } from '_/utils/constants';
+import { dissectResponse, imageValidation } from '_/utils/utils';
 import * as mobilenet from '@tensorflow-models/mobilenet';
 import * as React from 'react';
 

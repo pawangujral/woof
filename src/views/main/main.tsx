@@ -1,12 +1,12 @@
-import Thumbnail from '_components/thumbnail';
-import useToasts from '_hooks/use-toasts';
+import Thumbnail from '_/components/thumbnail';
+import useToasts from '_/hooks/use-toasts';
 import {
   DOGS_API_ENDPOINT_BREED_ALL,
   ERROR_DEFAULT_MESSAGE,
-} from '_utils/constants';
-import { flatReponse } from '_utils/utils';
-import Gallery from '_views/gallery';
-import Uploader from '_views/uploader';
+} from '_/utils/constants';
+import { flatReponse } from '_/utils/utils';
+import Gallery from '_/views/gallery';
+import Uploader from '_/views/uploader';
 import * as React from 'react';
 
 const Main: React.FC = (): JSX.Element => {

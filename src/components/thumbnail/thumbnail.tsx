@@ -1,6 +1,6 @@
-import LoaderImage from '_assets/images/landing.png';
-import NotFoundImage from '_assets/images/notfound.png';
-import ReadyImage from '_assets/images/ready.png';
+import LoaderImage from '_/assets/images/landing.png';
+import NotFoundImage from '_/assets/images/notfound.png';
+import ReadyImage from '_/assets/images/ready.png';
 import * as React from 'react';
 
 import { FigureCard } from './thumbnail.style';

@@ -1,4 +1,4 @@
-import { toastMessagesType, toastType } from '_utils/types';
+import { toastMessagesType, toastType } from '_/utils/types';
 import * as React from 'react';
 
 import { ToastContainer, ToastMessage } from './use-toasts.style';

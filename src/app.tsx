@@ -1,6 +1,6 @@
-import { ToastProvider } from '_hooks/use-toasts';
-import GlobalStyle from '_theme/global-styles';
-import Header from '_views/common/header';
+import { ToastProvider } from '_/hooks/use-toasts';
+import GlobalStyle from '_/theme/global-styles';
+import Header from '_/views/common/header';
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
